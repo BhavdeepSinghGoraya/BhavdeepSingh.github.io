@@ -1,45 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Bhavdeep Singh Lab 7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 24px;
-        }
-
-        .container {
+        #slideshow-container {
+            position: relative;
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: auto;
         }
 
-        p {
-            font-size: 18px;
+        .mySlides {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: auto;
+            animation: fade 2s ease-in-out infinite;
+        }
+
+        @keyframes fade {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            20%, 80% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Github Pages Lab 7 Bhavdeep Singh</h1>
-    </header>
-    <div class="container">
-        <p>Welcome to Bhavdeep Singh's webpage on GitHub Pages!</p>
-        <p>This Page is created for Lab 7 (3475-Web-Server-Administration).</p>
-        <p></p>
-    </div>
+
+<div id="slideshow-container">
+    <img class="mySlides" src="image1.jpg" alt="Image 1">
+    <img class="mySlides" src="image2.jpg" alt="Image 2">
+    <img class="mySlides" src="image3.jpg" alt="Image 3">
+    <!-- Add more images as needed -->
+</div>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        const slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    }
+</script>
+
 </body>
 </html>
